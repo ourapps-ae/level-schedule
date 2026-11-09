@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "level-schedule-connected",
+  "title": "Level schedule: connected consumer",
+  "status": "example",
+  "view": "component",
+  "focus": "component",
+  "definitions": [
+    {
+      "id": "ourapps-ae.level-schedule",
+      "name": "Level schedule",
+      "kind": "component",
+      "status": "example",
+      "package": "ourapps-ae/level-schedule",
+      "version": "0.3.0",
+      "ports": [
+        {
+          "id": "level-schedule",
+          "name": "Level schedule",
+          "direction": "output",
+          "kind": "interface",
+          "type": "ae/level-schedule",
+          "version": "1.0.0"
+        }
+      ],
+      "settings": [
+        {
+          "id": "levelSeconds",
+          "name": "Levelseconds",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": 600
+        },
+        {
+          "id": "afterLastLevel",
+          "name": "Afterlastlevel",
+          "type": "string",
+          "required": false,
+          "secret": false,
+          "default": "double"
+        },
+        {
+          "id": "multiplier",
+          "name": "Multiplier",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": 2
+        }
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "Example application consumer",
+      "kind": "application",
+      "status": "example",
+      "revision": "0.1.0",
+      "ports": [
+        {
+          "id": "level-schedule",
+          "name": "Level schedule",
+          "direction": "input",
+          "kind": "interface",
+          "type": "ae/level-schedule",
+          "version": "1.0.0",
+          "required": true,
+          "cardinality": "one"
+        }
+      ],
+      "settings": []
+    }
+  ],
+  "instances": [
+    {
+      "id": "component",
+      "name": "Level schedule",
+      "definition": "ourapps-ae.level-schedule",
+      "configuration": {}
+    },
+    {
+      "id": "consumer",
+      "name": "Example consumer",
+      "definition": "consumer",
+      "configuration": {}
+    }
+  ],
+  "connections": [
+    {
+      "source": {
+        "instance": "component",
+        "port": "level-schedule"
+      },
+      "target": {
+        "instance": "consumer",
+        "port": "level-schedule"
+      }
+    }
+  ]
+}

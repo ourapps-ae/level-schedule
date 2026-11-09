@@ -1,0 +1,44 @@
+{
+  "id": "ourapps-ae.level-schedule",
+  "name": "Level schedule",
+  "kind": "component",
+  "status": "example",
+  "package": "ourapps-ae/level-schedule",
+  "version": "0.3.0",
+  "ports": [
+    {
+      "id": "level-schedule",
+      "name": "Level schedule",
+      "direction": "output",
+      "kind": "interface",
+      "type": "ae/level-schedule",
+      "version": "1.0.0"
+    }
+  ],
+  "settings": [
+    {
+      "id": "levelSeconds",
+      "name": "Levelseconds",
+      "type": "number",
+      "required": false,
+      "secret": false,
+      "default": 600
+    },
+    {
+      "id": "afterLastLevel",
+      "name": "Afterlastlevel",
+      "type": "string",
+      "required": false,
+      "secret": false,
+      "default": "double"
+    },
+    {
+      "id": "multiplier",
+      "name": "Multiplier",
+      "type": "number",
+      "required": false,
+      "secret": false,
+      "default": 2
+    }
+  ]
+}

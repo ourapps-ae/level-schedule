@@ -1,0 +1,112 @@
+{
+  "id": "level-schedule",
+  "type": "ae/level-schedule",
+  "version": "1.0.0",
+  "operations": {
+    "createScheduleApi": {
+      "arguments": [
+        "schedule:Schedule"
+      ],
+      "returns": "ScheduleApi {schedule,levelAt,describe,levelInfo} (the schedule bound, so the clock reading is the only argument)"
+    },
+    "levelAt": {
+      "arguments": [
+        "elapsedMs:number"
+      ],
+      "returns": "number (level from 1; a method of ScheduleApi; same as levelFor on the bound schedule)"
+    },
+    "describe": {
+      "arguments": [
+        "elapsedMs:number"
+      ],
+      "returns": "LevelDescription {level,label,values,extended,final,next:LevelInfo|null,msUntilNext:number|null} (a method of ScheduleApi: the level in force, the next level and the unpaused time until it)"
+    },
+    "ScheduleApi.levelInfo": {
+      "arguments": [
+        "level:number"
+      ],
+      "returns": "LevelInfo (the values of a level by number, for example the blinds a hand is dealt at)"
+    },
+    "levelsFromRules": {
+      "arguments": [
+        "rules:unknown",
+        "options?:{at?:string,fields?:Record<string,string>}"
+      ],
+      "returns": "Level[] (section.levels as levels: label 'Level n', values from the listed fields; default section blinds, default fields small_blind->sb and big_blind->bb)"
+    },
+    "scheduleFromRules": {
+      "arguments": [
+        "rules:unknown",
+        "settings?:Partial<ScheduleSettings>",
+        "options?:{at?,fields?}"
+      ],
+      "returns": "Schedule (levels as levelsFromRules, levelSeconds from level_duration_seconds, doubling from after_last_level.<field>_multiplier_each_level, all fields agreeing; explicit settings win)"
+    },
+    "createSchedule": {
+      "arguments": [
+        "levels:{label:string,values:Record<string,number>}[]",
+        "settings?:{levelSeconds:integer,afterLastLevel:'double'|'repeat'|'stop',multiplier:integer}"
+      ],
+      "returns": "Schedule"
+    },
+    "validateSettings": {
+      "arguments": [
+        "settings?:Partial<ScheduleSettings>"
+      ],
+      "returns": "ScheduleSettings"
+    },
+    "levelDurationMs": {
+      "arguments": [
+        "schedule:Schedule"
+      ],
+      "returns": "number"
+    },
+    "levelFor": {
+      "arguments": [
+        "schedule:Schedule",
+        "elapsedMs:number"
+      ],
+      "returns": "number (1-based level number)"
+    },
+    "levelInfo": {
+      "arguments": [
+        "schedule:Schedule",
+        "level:number"
+      ],
+      "returns": "{level,label,values,extended,final}"
+    },
+    "currentLevel": {
+      "arguments": [
+        "schedule:Schedule",
+        "elapsedMs:number"
+      ],
+      "returns": "LevelInfo"
+    },
+    "nextLevel": {
+      "arguments": [
+        "schedule:Schedule",
+        "elapsedMs:number"
+      ],
+      "returns": "LevelInfo|null (null when a stop schedule has run out)"
+    },
+    "msUntilNext": {
+      "arguments": [
+        "schedule:Schedule",
+        "elapsedMs:number"
+      ],
+      "returns": "number|null (unpaused milliseconds)"
+    },
+    "table": {
+      "arguments": [
+        "schedule:Schedule",
+        "count?:number"
+      ],
+      "returns": "LevelInfo[]"
+    }
+  },
+  "notes": "Engine form: createScheduleApi(schedule) gives levelAt(elapsedMs) and describe(elapsedMs) for a tournament, plus levelInfo(level) for a game that deals at a level. scheduleFromRules builds the schedule from the house rules file (any parsed rules: rules-settings' value layer is not needed). The elapsed argument is the level clock of game-clock (elapsed(clock,'level')).",
+  "types": {
+    "LevelDescription": "LevelInfo & {next:LevelInfo|null,msUntilNext:number|null}",
+    "Level": "{label:string,values:Record<string,number>}"
+  }
+}

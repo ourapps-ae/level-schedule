@@ -1,0 +1,194 @@
+{
+  "format": 1,
+  "kind": "component",
+  "identity": {
+    "name": "ourapps-ae/level-schedule",
+    "version": "0.3.0",
+    "sourceRevision": "19905b75dbea89fbfd424d67fe26c81aaed0e018",
+    "sourceTreeDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "licenceStatus": "deferred"
+  },
+  "facilities": [
+    {
+      "id": "level-schedule",
+      "description": "Level for a clock reading, values per level, time to the next level"
+    }
+  ],
+  "documents": {
+    "contract": "CONTRACT.md",
+    "interfaces": [
+      "interfaces/level-schedule.json",
+      "suitability.json"
+    ],
+    "examples": [
+      "examples/blinds.ts"
+    ],
+    "licenceNotice": "LICENCE"
+  },
+  "collect": [
+    {
+      "id": "levelSeconds",
+      "type": "integer",
+      "grammar": "integer",
+      "required": false,
+      "secret": false,
+      "default": 600
+    },
+    {
+      "id": "afterLastLevel",
+      "type": "string",
+      "grammar": "slug",
+      "required": false,
+      "secret": false,
+      "default": "double"
+    },
+    {
+      "id": "multiplier",
+      "type": "integer",
+      "grammar": "integer",
+      "required": false,
+      "secret": false,
+      "default": 2
+    }
+  ],
+  "files": [
+    {
+      "path": "CONTRACT.md",
+      "executable": false
+    },
+    {
+      "path": "INSTRUCTIONS.md",
+      "executable": false
+    },
+    {
+      "path": "LICENCE",
+      "executable": false
+    },
+    {
+      "path": "SOURCE.md",
+      "executable": false
+    },
+    {
+      "path": "examples/blinds.ts",
+      "executable": false
+    },
+    {
+      "path": "implementation/server/levels.ts",
+      "executable": false
+    },
+    {
+      "path": "interfaces/level-schedule.json",
+      "executable": false
+    },
+    {
+      "path": "suitability.json",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/house-blinds.json",
+      "executable": false
+    },
+    {
+      "path": "tests/web.test.ts",
+      "executable": false
+    },
+    {
+      "path": "tools.lock.json",
+      "executable": false
+    },
+    {
+      "path": "visual/definition.json",
+      "executable": false
+    },
+    {
+      "path": "visual/examples/connected.json",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.png",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.svg",
+      "executable": false
+    },
+    {
+      "path": "visual/output/description.md",
+      "executable": false
+    }
+  ],
+  "artefacts": [
+    {
+      "source": "implementation/server/levels.ts",
+      "destination": "components/level-schedule/server/levels.ts",
+      "template": false,
+      "executable": false
+    }
+  ],
+  "dependencies": [],
+  "provides": [
+    {
+      "id": "level-schedule",
+      "type": "ae/level-schedule",
+      "version": "1.0.0",
+      "path": "interfaces/level-schedule.json"
+    }
+  ],
+  "requires": [],
+  "visual": {
+    "definition": "visual/definition.json",
+    "examples": [
+      "visual/examples/connected.json"
+    ],
+    "outputs": [
+      "visual/output/connected.svg",
+      "visual/output/connected.png"
+    ],
+    "descriptions": [
+      "visual/output/description.md"
+    ]
+  },
+  "capabilities": {
+    "hosts": [],
+    "secrets": [],
+    "writes": [
+      "components/level-schedule/server/levels.ts"
+    ]
+  },
+  "infrastructure": {
+    "accounts": [],
+    "costStatus": "unmeasured",
+    "deployedReason": "No deployed service; injected resources and local library functions only."
+  },
+  "verification": [
+    {
+      "id": "web",
+      "root": "package",
+      "argv": [
+        "node",
+        "--test",
+        "tests/web.test.ts"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "node": "26.5.0"
+      },
+      "fixtures": [
+        "tests/fixtures/house-blinds.json"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "required-local",
+      "requirements": []
+    }
+  ],
+  "upgrade": {
+    "policy": "patch",
+    "migration": "files-only"
+  }
+}
