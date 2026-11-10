@@ -1,6 +1,6 @@
 {
   "name": "level-schedule",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "title": "Level schedule",
   "description": "A list of levels that advance on a timer, with a rule for what happens after the last one (double, repeat or stop). Levels are {label, values}, so the same component schedules poker blinds, antes or any stepped stake.",
   "facilities": [
