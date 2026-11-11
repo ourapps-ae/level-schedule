@@ -18,7 +18,7 @@ The installer collects three settings. `levelSeconds` is how long each level las
 - `implementation/server/levels.ts` -> `components/level-schedule/server/levels.ts`
 
 Dependencies: none.
-`tools.lock.json` pins verification tools: node 26.5.0. Licence: `Apache-2.0` (`LICENCE`, `NOTICE`).
+`tools.lock.json` pins verification tools: node 26.5. Licence: `Apache-2.0` (`LICENCE`, `NOTICE`).
 
 ## Provided interfaces
 - `interfaces/level-schedule.json` defines `level-schedule` (ae/level-schedule) version 1.0.0: an OpenRPC 1.3.2 document, one method per function (a member of a created object is `<Type>.<member>`), with parameter, result and data types as JSON Schema 2020-12 (`components.schemas`) and thrown errors under `errors`.
@@ -38,7 +38,7 @@ No deployed service and no accounts; local library functions only.
 ## Verification
 `tests/web.test.ts` builds the poker blinds schedule from `tests/fixtures/house-blinds.json` (the blinds section of the house rules, test data only) and checks every listed level, the level boundaries, the doubling rule for levels 17 to 19, plus `repeat` and `stop` with a small schedule, countdowns, validation errors, and the cap on very large values. It also checks `levelAt` and `describe` (boundaries, next level, the end of a stop schedule, past the last level, plain data) and of `levelsFromRules` and `scheduleFromRules` (the house rules, other sections and field names, refusal of missing or mixed values).
 
-- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5.0)
+- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
 
 ## Scenarios and presentation
 A hold'em tournament with 16 listed blind levels, ten minutes each, doubling after. A turbo game with five-minute levels. A fixed-structure game that stops rising at the last level. A non-poker game stepping a target score with `values: {target}`.

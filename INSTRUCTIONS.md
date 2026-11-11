@@ -17,5 +17,5 @@ Pass the unpaused level clock in milliseconds; do not pass wall-clock time or th
 ## How to check
 From the component directory:
 
-- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5.0)
-- `python3.12 -B /Users/george/Projects/com/my/tools/check_component.py components/level-schedule` validates the manifest, sidecars and runs the required-local suite.
+- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
+- `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m aepm fetch ourapps-ae/level-schedule@VERSION --store STORE --from https://ourapps.app` and runs its suites.
