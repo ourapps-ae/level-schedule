@@ -3,7 +3,7 @@
 ## For the agent
 Select this component for any game whose stakes rise on a timer. Set `levelSeconds` from the recipe's level length answer, and `afterLastLevel` and `multiplier` from the house rules (hold'em: 600, double, 2). Supply the level list from the rules file. Connect the provided `level-schedule` to the tournament component.
 
-- Select package `ourapps-ae/level-schedule` version `0.4.1`.
+- Select package `ourapps-ae/level-schedule` version `0.5.0`.
 - Settings to configure:
   - `levelSeconds` (integer; optional; default `600`)
   - `afterLastLevel` (string, slug; optional; default `double`)
