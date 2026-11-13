@@ -1,6 +1,12 @@
 {
   "artefacts": [
     {
+      "destination": "components/level-schedule/server/index.ts",
+      "executable": false,
+      "source": "implementation/server/index.ts",
+      "template": false
+    },
+    {
       "destination": "components/level-schedule/server/levels.ts",
       "executable": false,
       "source": "implementation/server/levels.ts",
@@ -11,6 +17,7 @@
     "hosts": [],
     "secrets": [],
     "writes": [
+      "components/level-schedule/server/index.ts",
       "components/level-schedule/server/levels.ts"
     ]
   },
@@ -82,6 +89,10 @@
     {
       "executable": false,
       "path": "examples/blinds.ts"
+    },
+    {
+      "executable": false,
+      "path": "implementation/server/index.ts"
     },
     {
       "executable": false,
